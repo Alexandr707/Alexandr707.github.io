@@ -51,8 +51,8 @@ function PostsList({ title, posts = [], status, limit }) {
                         <UserSelector label={title} />
                     </Stack>
                     <CustomPagination page={page} limit={limit} count={posts.length} setPage={setPage} />
-                    <Grid container spacing={0.5}>
-                        <Grid item xs={12}>
+                    <Grid container spacing={2} columns={{ sm: 6, md: 12 }}>
+                        <Grid item sm={6} md={12} spacing={2}>
                             <b>{title}</b>
                         </Grid>
                         {postsSlice.length === 0
@@ -61,7 +61,9 @@ function PostsList({ title, posts = [], status, limit }) {
                                   return (
                                       <Grid
                                           item
-                                          xs={12}
+                                          container
+                                          sm={6}
+                                          md={6}
                                           onClick={() => {
                                               navigate(`/posts/${item.id}`);
                                           }}

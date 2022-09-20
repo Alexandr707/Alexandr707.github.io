@@ -26,7 +26,7 @@ function App() {
         <>
             <Header />
             <Routes>
-                <Route index element={<Navigation />} />
+                <Route index element={<AllPosts />} />
                 <Route path="posts">
                     <Route index element={<AllPosts />} />
                     <Route path=":postId" element={<FullPost />} />

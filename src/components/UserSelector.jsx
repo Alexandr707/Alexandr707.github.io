@@ -7,8 +7,8 @@ import { VARS } from "../static/vars";
 
 function UserSelector() {
     const navigate = useNavigate();
+    const [inputVal, setVal] = useState("");
     const { username } = useParams();
-    const [inputVal, setVal] = useState(username || "Users");
     const { users, status } = useSelector((state) => state.users);
 
     return (

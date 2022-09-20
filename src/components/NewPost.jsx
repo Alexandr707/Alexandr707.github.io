@@ -46,7 +46,7 @@ function NewPost({ isNewPost, closeModal }) {
                     {errors.body && <Alert severity="warning">Please enter body {errors.body?.message}</Alert>}
                     <TextField
                         label="Body"
-                        variant="standard"
+                        variant="outlined"
                         multiline
                         rows={6}
                         {...register("body", { required: true })}
