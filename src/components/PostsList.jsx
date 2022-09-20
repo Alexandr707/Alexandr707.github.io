@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { CircularProgress, Container, Grid } from "@mui/material";
+import { CircularProgress, Container, Grid, Stack } from "@mui/material";
 
 import { VARS } from "../static/vars";
 import { deletePost, removePost } from "../redeux/store";
 import ConfirmModal from "./ConfirmModal";
 import CustomPagination from "./CustomPagination";
 import Post from "./Post";
+import PostsQty from "./PostsQty";
+import UserSelector from "./UserSelector";
 
 function PostsList({ title, posts = [], status, limit }) {
     const dispatch = useDispatch();
@@ -44,10 +46,14 @@ function PostsList({ title, posts = [], status, limit }) {
             {status === VARS.loading && <CircularProgress sx={{ mx: "auto" }} />}
             {status === VARS.loaded && (
                 <>
+                    <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
+                        <PostsQty />
+                        <UserSelector label={title} />
+                    </Stack>
                     <CustomPagination page={page} limit={limit} count={posts.length} setPage={setPage} />
                     <Grid container spacing={0.5}>
                         <Grid item xs={12}>
-                            {title}
+                            <b>{title}</b>
                         </Grid>
                         {postsSlice.length === 0
                             ? "NO posts"

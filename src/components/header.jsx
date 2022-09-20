@@ -55,7 +55,12 @@ function Header() {
                             >
                                 <Typography variant="body1">Add post</Typography>
                             </Button>
-                            <Button color="inherit" variant="outlined" onClick={() => dispatch(logout())}>
+                            <Button
+                                color="inherit"
+                                variant="outlined"
+                                onClick={() => dispatch(logout())}
+                                sx={{ backgroundColor: "primary.dark" }}
+                            >
                                 <Typography variant="body1">Logout</Typography>
                             </Button>
                         </>

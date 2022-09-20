@@ -11,6 +11,7 @@ import FullPost from "./pages/FullPost";
 import Error from "./pages/Error";
 import UserPosts from "./pages/UserPosts";
 import AllPosts from "./pages/AllPosts";
+import Navigation from "./pages/Navigation";
 
 function App() {
     const dispatch = useDispatch();
@@ -25,11 +26,14 @@ function App() {
         <>
             <Header />
             <Routes>
-                <Route path="/posts" element={<AllPosts />} />
-                <Route path="/users/:id" element={<UserPosts />} />
-                <Route path="/posts/:postId" element={<FullPost />} />
-                <Route path="/error/:status" element={<Error />} />
-                <Route path="*" element={<AllPosts />} />
+                <Route index element={<Navigation />} />
+                <Route path="posts">
+                    <Route index element={<AllPosts />} />
+                    <Route path=":postId" element={<FullPost />} />
+                </Route>
+                <Route path="users/:id/:username" element={<UserPosts />} />
+                <Route path="error/:status" element={<Error />} />
+                <Route path="*" element={<Navigation />} />
             </Routes>
 
             <ArrowUp />
