@@ -12,6 +12,7 @@ function UserPosts({ children }) {
     const { id } = useParams();
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users.users);
+    const limit = useSelector((state) => state.posts.limit);
     const user = users.find((item) => item.id === parseInt(id));
     const [usersRequest, setUsersRequest] = useState(Boolean(users));
     const [posts, setPosts] = useState(null);
@@ -45,7 +46,7 @@ function UserPosts({ children }) {
     }
 
     return Boolean(user) ? (
-        <PostsList title={`${user.username} posts`} posts={posts || []} status={status} limit={posts?.length || 0} />
+        <PostsList title={`${user.username} posts`} posts={posts || []} status={status} limit={limit || 10} />
     ) : (
         <CircularProgress />
     );
